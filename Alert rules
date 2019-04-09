@@ -1,0 +1,41 @@
+ALERTS RULES IN PROMETHEUS:
+
+This is alert rule for the prometheus.rule section which need to written in prometheus config map
+
+“I am working on the expression of promQL will get this working soon.”
+  
+~~~
+   - alert: "Low pods"
+       expr: sum without(instance) (rate(engine_daemon_container_actions_seconds_count{action="delete"}[1m])) > 0.1
+       for: 2m
+       annotations:
+         severity: "WARNING"
+         message: "{{ $labels.instance }} has a HIGH rate of deleted containers. Deleted container rate is {{ humanize $value}}%."
+~~~
+
+ALERTMANAGER CONFIG
+For reference, this will send an alert to gmail on “admin@exmaple.com”
+
+We need to modify config map of alremanger to edit this.
+
+~~~
+apiVersion: v1
+data:
+  alertmanager.yml: |
+    global:
+      smtp_from: "alert_from@example.com"
+      smtp_smarthost: "smtp.gmail.com:587"
+      smtp_auth_username: "gmail_user@example.com"
+      smtp_auth_password: "<Gmail_Auth_Token>"
+    route:
+      routes:
+        - receiver: ‘maill’
+          severity: warning
+           match:
+- app: postgressql
+    receivers:
+      - name: 'mail'
+        mail_configs:
+        - to: "admin@example.com"
+
+~~~
