@@ -108,7 +108,7 @@ items:
 
 Change the prometheus configuration so that it can listen to exporter:
 Edit the configMap op prometheus. For that you need admin privileges of openshift-metrics. Add the postgressql part in configuration. I have added in last of the configuration. We can see below after changing the default configMap how it looks:
-
+~~~
 [root@master-0 ~]# oc edit cm prometheus -n openshift-metrics
 apiVersion: v1
 data:
@@ -120,9 +120,7 @@ data:
   prometheus.yml: |
     rule_files:
       - '*.rules'
- 
- 
-    scrape_configs:
+     scrape_configs:
     - job_name: 'kubernetes-apiservers'
  
       kubernetes_sd_configs:
@@ -385,7 +383,7 @@ metadata:
   selfLink: /api/v1/namespaces/openshift-metrics/configmaps/prometheus
   uid: b16df417-383c-11e9-965d-fa163ec39299
 
-
+~~~
 
 
 
