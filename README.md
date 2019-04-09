@@ -4,7 +4,7 @@
 
 We are going to use Prometheus Monitoring tool with the OCP 3.10 to monitor the Postgresql.
 
-# Steps :-
+## Steps :-
 
 # Install Prometheus monitoring tool in your cluster.
 Use the db project :- 
