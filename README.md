@@ -25,9 +25,10 @@ postgresql-1-lzqwh   1/1       Running   0          19h
 NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 postgresql   ClusterIP   172.30.133.86   <none>        5432/TCP   19h
 ~~~
-**Use the Project openshift-metrics **
-
+**Use the Project openshift-metrics**
+~~~
 [root@master-0 ~]# oc project openshift-metrics 
+~~~
 
 **Below the DeploymentConfig of postgres-exporter**
 
