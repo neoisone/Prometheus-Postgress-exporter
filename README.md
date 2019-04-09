@@ -4,9 +4,9 @@
 
 We are going to use Prometheus Monitoring tool with the OCP 3.10 to monitor the Postgresql.
 
-## Steps :-
+**Steps **
 
-# Install Prometheus monitoring tool in your cluster.
+**Install Prometheus monitoring tool in your cluster. **
 Use the db project :- 
 
 [root@master-0 ~]# oc project psql
@@ -20,11 +20,11 @@ postgresql-1-lzqwh   1/1       Running   0          19h
 NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 postgresql   ClusterIP   172.30.133.86   <none>        5432/TCP   19h
 
-# Use the Project openshift-metrics
+**Use the Project openshift-metrics **
 
 [root@master-0 ~]# oc project openshift-metrics 
 
-# Below the DeploymentConfig of postgres-exporter.
+**Below the DeploymentConfig of postgres-exporter. **
 
 The following deploymentconfig will monitor the sampledb database present in postgresql-1-lzqwh pod which has  user “userTBW” and password “VXynx2vI13GX3yGM” exposed on   172.30.133.86 on port 5432 as we can see from svc of postgres above.
 
@@ -35,7 +35,7 @@ postgresql://USER:PASSWORD@IP:PORT/DATABASE_NAME?sslmode=disable
 The above format is format of dataStore we need to monitor.
 
 
-DeploymentConfig Object Definition:
+**DeploymentConfig Object Definition: **
 
 ~~~
 apiVersion: v1
@@ -90,10 +90,10 @@ items:
     Triggers:
 ~~~
 
-# Expose Deployment to create the service.
+**Expose Deployment to create the service.
 [root@master-0 ~]# oc expose dc prometheus-postgres-exporter --port 9187
 
-# TO CHECK METRICS ON CMD:
+**TO CHECK METRICS ON CMD:
 
 [root@master-0 ~]# curl 172.30.75.184:9187/metrics
                                             |                     |--------->>>--|
