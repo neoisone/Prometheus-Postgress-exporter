@@ -1,6 +1,6 @@
 # Prometheus-Postgress-exporter
 
-# Using Prometheus Monitoring tool for Postgresql 
+**Using Prometheus Monitoring tool for Postgresql**
 
 We are going to use Prometheus Monitoring tool with the OCP 3.10 to monitor the Postgresql.
 
@@ -9,17 +9,22 @@ We are going to use Prometheus Monitoring tool with the OCP 3.10 to monitor the 
 **Install Prometheus monitoring tool in your cluster**
 Use the db project :- 
 
+~~~
 [root@master-0 ~]# oc project psql
 Now using project "psql" on server "https://example.example.com:443".
+~~~
 
+~~~
 [root@master-0 ~]# oc get pods
 NAME                 READY     STATUS    RESTARTS   AGE
 postgresql-1-lzqwh   1/1       Running   0          19h
+~~~
 
+~~~
 [root@master-0 ~]# oc get svc
 NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 postgresql   ClusterIP   172.30.133.86   <none>        5432/TCP   19h
-
+~~~
 **Use the Project openshift-metrics **
 
 [root@master-0 ~]# oc project openshift-metrics 
